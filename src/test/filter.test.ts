@@ -1,28 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import demo from '../fixtures/demo-leagues.json'
+import { toLeague } from '../api/sportsDb'
 import { cleanAlternate, normalizeText, type League, type SeasonBadge } from '../domain/league'
 import { filterLeagues, pickBadge, sportsFrom } from '../domain/filter'
 
-type RawLeague = {
-  idLeague: string
-  strLeague: string
-  strSport: string
-  strLeagueAlternate?: string | null
-}
-
-// Mirrors toLeague() from api/sportsDb so these tests depend on domain/ only.
-function toLeague(raw: RawLeague): League {
-  const alternate = cleanAlternate(raw.strLeagueAlternate)
-  return {
-    id: raw.idLeague,
-    name: raw.strLeague,
-    sport: raw.strSport,
-    alternate,
-    searchText: normalizeText(`${raw.strLeague} ${alternate ?? ''}`),
-  }
-}
-
-const leagues: League[] = (demo.leagues as RawLeague[]).map(toLeague)
+const leagues: League[] = demo.leagues.map(toLeague)
 const names = (list: League[]) => list.map((league) => league.name)
 
 describe('normalizeText', () => {
