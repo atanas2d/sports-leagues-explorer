@@ -2,8 +2,10 @@ import { ApiError, kindForStatus } from './errors'
 
 const SNIPPET_LENGTH = 100
 
-// Checks status and content type before parsing: the provider answers a bad key (403) and a rate
-// limit (429) with plain text, so a blind response.json() would hide the real reason.
+/**
+ * Checks status and content type before parsing: the provider answers a bad key (403) and a rate
+ * limit (429) with plain text, so a blind response.json() would hide the real reason.
+ */
 export async function getJson(url: string, signal?: AbortSignal): Promise<unknown> {
   const response = await fetchOrNetworkError(url, signal)
   if (!response.ok) {
