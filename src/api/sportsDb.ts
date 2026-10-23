@@ -40,8 +40,12 @@ export async function fetchSeasonBadges(leagueId: string, signal?: AbortSignal):
 }
 
 export async function loadDemoLeagues(): Promise<League[]> {
-  const { default: demo } = await import('../fixtures/demo-leagues.json')
-  return demo.leagues.map(toLeague)
+  try {
+    const { default: demo } = await import('../fixtures/demo-leagues.json')
+    return demo.leagues.map(toLeague)
+  } catch (error) {
+    throw new ApiError('network', error instanceof Error ? error.message : 'Demo data failed to load')
+  }
 }
 
 function rows<T>(body: unknown, key: 'leagues' | 'seasons'): T[] {

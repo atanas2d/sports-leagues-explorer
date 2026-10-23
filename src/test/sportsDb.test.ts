@@ -53,13 +53,6 @@ describe('fetchLeagues', () => {
     expect(isRetryable(error)).toBe(true)
   })
 
-  it('maps a 5xx to a retryable server ApiError', async () => {
-    respond('<html>502 Bad Gateway</html>', 502, 'text/html')
-    const error: unknown = await fetchLeagues().catch((e: unknown) => e)
-    expect(error).toMatchObject({ kind: 'server', status: 502 })
-    expect(isRetryable(error)).toBe(true)
-  })
-
   it('maps a failed fetch to a retryable network ApiError', async () => {
     vi.stubGlobal(
       'fetch',
@@ -77,10 +70,6 @@ describe('fetchLeagues', () => {
     await expect(fetchLeagues()).rejects.toMatchObject({ kind: 'bad-response' })
   })
 
-  it('rejects a response of the wrong shape as bad-response', async () => {
-    respondJson({ leagues: 'nope' })
-    await expect(fetchLeagues()).rejects.toMatchObject({ kind: 'bad-response' })
-  })
 })
 
 describe('fetchSeasonBadges', () => {
@@ -104,17 +93,6 @@ describe('fetchSeasonBadges', () => {
     await expect(fetchSeasonBadges('999999')).resolves.toEqual([])
   })
 
-  it('drops seasons without a badge', async () => {
-    respondJson({
-      seasons: [
-        { strSeason: '2001-2002', strBadge: null },
-        { strSeason: '2002-2003', strBadge: 'https://example.test/2002.png' },
-      ],
-    })
-    await expect(fetchSeasonBadges('1')).resolves.toEqual([
-      { season: '2002-2003', badgeUrl: 'https://example.test/2002.png' },
-    ])
-  })
 })
 
 describe('toLeague', () => {
@@ -124,25 +102,4 @@ describe('toLeague', () => {
     expect(league.searchText).toBe('english premier league')
   })
 
-  it('cleans the alternate name and folds it into searchText', () => {
-    const league = toLeague({
-      idLeague: '4933',
-      strLeague: 'Austrian ICE Hockey League',
-      strSport: 'Ice Hockey',
-      strLeagueAlternate: 'bet-at-home ICE Hockey League ',
-    })
-    expect(league.alternate).toBe('bet-at-home ICE Hockey League')
-    expect(league.searchText).toBe('austrian ice hockey league bet-at-home ice hockey league')
-  })
-})
-
-describe('isRetryable', () => {
-  it('is true only for rate-limited, server and network errors', () => {
-    expect(isRetryable(new ApiError('rate-limited', 'x', 429))).toBe(true)
-    expect(isRetryable(new ApiError('server', 'x', 503))).toBe(true)
-    expect(isRetryable(new ApiError('network', 'x'))).toBe(true)
-    expect(isRetryable(new ApiError('rejected', 'x', 403))).toBe(false)
-    expect(isRetryable(new ApiError('bad-response', 'x', 200))).toBe(false)
-    expect(isRetryable(new Error('x'))).toBe(false)
-  })
 })

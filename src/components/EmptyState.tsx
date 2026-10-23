@@ -4,6 +4,14 @@ interface Props {
 }
 
 export function EmptyState({ query, onClear }: Props) {
+  if (query === '') {
+    return (
+      <div className="state">
+        <h2>No leagues to show</h2>
+        <p>The data provider returned an empty list.</p>
+      </div>
+    )
+  }
   return (
     <div className="state">
       <h2>No leagues match “{query}”</h2>

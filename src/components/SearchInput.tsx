@@ -1,9 +1,10 @@
 interface Props {
   value: string
   onChange: (value: string) => void
+  disabled?: boolean
 }
 
-export function SearchInput({ value, onChange }: Props) {
+export function SearchInput({ value, onChange, disabled = false }: Props) {
   return (
     <div className="field">
       <label className="sr" htmlFor="search">
@@ -14,6 +15,7 @@ export function SearchInput({ value, onChange }: Props) {
         type="search"
         placeholder="Search leagues"
         autoComplete="off"
+        disabled={disabled}
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />

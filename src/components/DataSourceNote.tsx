@@ -3,7 +3,7 @@ interface Props {
   sportCount: number
 }
 
-/** Tells the reviewer where the data comes from and offers the other source, as plain links. */
+/** Plain links, not a toggle: a full navigation resets the URL and the cache, which is the point. */
 export function DataSourceNote({ demo, sportCount }: Props) {
   if (demo) {
     return (

@@ -32,6 +32,7 @@ const MESSAGES: Record<ApiErrorKind, { title: string; detail: string; retry: boo
 }
 
 export function ErrorState({ error, onRetry }: Props) {
+  // Every query function throws an ApiError; the fallback keeps a stray Error from blanking the page.
   const { title, detail, retry } = MESSAGES[error.kind] ?? UNREACHABLE
   return (
     <div className="state" role="alert">

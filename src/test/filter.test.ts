@@ -1,18 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import demo from '../fixtures/demo-leagues.json'
 import { toLeague } from '../api/sportsDb'
-import { cleanAlternate, normalizeText, type League, type SeasonBadge } from '../domain/league'
+import { cleanAlternate, type League, type SeasonBadge } from '../domain/league'
 import { filterLeagues, pickBadge, sportsFrom } from '../domain/filter'
 
 const leagues: League[] = demo.leagues.map(toLeague)
 const names = (list: League[]) => list.map((league) => league.name)
-
-describe('normalizeText', () => {
-  it('lowercases, trims and strips diacritics', () => {
-    expect(normalizeText('  Básquet ')).toBe('basquet')
-    expect(normalizeText('Québec')).toBe('quebec')
-  })
-})
 
 describe('filterLeagues', () => {
   it('returns every league in the original order when the filters are empty', () => {

@@ -23,11 +23,10 @@ function readFilters(search: string): Filters {
 }
 
 function writeFilters({ query, sport }: Filters) {
-  const params = new URLSearchParams(window.location.search)
-  if (query) params.set('q', query)
-  else params.delete('q')
-  if (sport) params.set('sport', sport)
-  else params.delete('sport')
-  const search = params.toString()
-  history.replaceState(null, '', `${window.location.pathname}${search ? `?${search}` : ''}`)
+  const url = new URL(window.location.href)
+  if (query) url.searchParams.set('q', query)
+  else url.searchParams.delete('q')
+  if (sport) url.searchParams.set('sport', sport)
+  else url.searchParams.delete('sport')
+  history.replaceState(null, '', url)
 }
