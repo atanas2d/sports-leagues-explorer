@@ -1,0 +1,174 @@
+{
+  "leagues": [
+    {
+      "idLeague": "4328",
+      "strLeague": "English Premier League",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4329",
+      "strLeague": "English League Championship",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4330",
+      "strLeague": "Scottish Premier League",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4331",
+      "strLeague": "German Bundesliga",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4332",
+      "strLeague": "Italian Serie A",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4334",
+      "strLeague": "French Ligue 1",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4335",
+      "strLeague": "Spanish La Liga",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4336",
+      "strLeague": "Greek Super League 1",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4337",
+      "strLeague": "Dutch Eredivisie",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4338",
+      "strLeague": "Belgian Pro League",
+      "strSport": "Soccer"
+    },
+    {
+      "idLeague": "4734",
+      "strLeague": "Argentine LNB",
+      "strSport": "Basketball",
+      "strLeagueAlternate": "Liga Nacional de Básquet"
+    },
+    {
+      "idLeague": "4434",
+      "strLeague": "Australian NBL",
+      "strSport": "Basketball",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "5113",
+      "strLeague": "Australian WNBL",
+      "strSport": "Basketball",
+      "strLeagueAlternate": "Women"
+    },
+    {
+      "idLeague": "5351",
+      "strLeague": "NBL1 West",
+      "strSport": "Basketball",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "5667",
+      "strLeague": "NBL1 Central",
+      "strSport": "Basketball",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "4489",
+      "strLeague": "V8 Supercars",
+      "strSport": "Motorsport",
+      "strLeagueAlternate": "Supercars Championship, Repco Supercars Championship, Supercars"
+    },
+    {
+      "idLeague": "4372",
+      "strLeague": "BTCC",
+      "strSport": "Motorsport",
+      "strLeagueAlternate": "British Touring Car Championship"
+    },
+    {
+      "idLeague": "4410",
+      "strLeague": "British GT Championship",
+      "strSport": "Motorsport",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "4730",
+      "strLeague": "World Rallycross Championship",
+      "strSport": "Motorsport",
+      "strLeagueAlternate": "European Rallycross Championship"
+    },
+    {
+      "idLeague": "5873",
+      "strLeague": "WorldSSP",
+      "strSport": "Motorsport",
+      "strLeagueAlternate": "Supersport World Championship, WSS, WSSP"
+    },
+    {
+      "idLeague": "4933",
+      "strLeague": "Austrian ICE Hockey League",
+      "strSport": "Ice Hockey",
+      "strLeagueAlternate": "bet-at-home ICE Hockey League "
+    },
+    {
+      "idLeague": "4924",
+      "strLeague": "Belarusian Extraleague",
+      "strSport": "Ice Hockey",
+      "strLeagueAlternate": "Belarusian Open Championship"
+    },
+    {
+      "idLeague": "5276",
+      "strLeague": "CEHL",
+      "strSport": "Ice Hockey",
+      "strLeagueAlternate": "Central European Hockey League, BeNe League"
+    },
+    {
+      "idLeague": "5159",
+      "strLeague": "Canadian OHL",
+      "strSport": "Ice Hockey",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "5161",
+      "strLeague": "Canadian QMJHL",
+      "strSport": "Ice Hockey",
+      "strLeagueAlternate": "Quebec Major Junior Hockey League, Ligue de hockey junior majeur du Québec, LHJMQ"
+    },
+    {
+      "idLeague": "5872",
+      "strLeague": "United Cup",
+      "strSport": "Tennis",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "4464",
+      "strLeague": "ATP World Tour",
+      "strSport": "Tennis",
+      "strLeagueAlternate": "Association of Tennis Professionals"
+    },
+    {
+      "idLeague": "4517",
+      "strLeague": "WTA Tour",
+      "strSport": "Tennis",
+      "strLeagueAlternate": "Womens Tennis Association"
+    },
+    {
+      "idLeague": "4581",
+      "strLeague": "Laver Cup",
+      "strSport": "Tennis",
+      "strLeagueAlternate": ""
+    },
+    {
+      "idLeague": "5040",
+      "strLeague": "Olympics Tennis",
+      "strSport": "Tennis",
+      "strLeagueAlternate": ""
+    }
+  ]
+}
