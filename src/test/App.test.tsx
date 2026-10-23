@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from '../App'
+import badges from './fixtures/badge-4328.json'
 
 const LEAGUES = {
   leagues: [
@@ -99,5 +100,21 @@ describe('App', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Try again' }))
     expect(await screen.findByRole('button', { name: /English Premier League/ })).toBeInTheDocument()
     expect(fetchMock).toHaveBeenCalledTimes(2)
+  })
+
+  it('opens a sheet with the badge of the clicked league and closes it again', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => jsonResponse(url.includes('search_all_seasons') ? badges : LEAGUES)),
+    )
+    renderApp()
+    await userEvent.click(await screen.findByRole('button', { name: /English Premier League/ }))
+    expect(screen.getByRole('dialog', { name: 'English Premier League' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('img', { name: 'English Premier League 1996-1997 season badge' }),
+    ).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Close' }))
+    expect(screen.queryByRole('heading', { name: 'English Premier League' })).not.toBeInTheDocument()
   })
 })

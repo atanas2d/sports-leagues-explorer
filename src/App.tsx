@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { BadgeSheet } from './components/BadgeSheet'
 import { DataSourceNote } from './components/DataSourceNote'
 import { EmptyState } from './components/EmptyState'
 import { ErrorState } from './components/ErrorState'
@@ -24,6 +25,7 @@ export default function App() {
     () => filterLeagues(leagues, { query: filters.query, sport }),
     [leagues, filters.query, sport],
   )
+  const selected = leagues.find((league) => league.id === selectedId) ?? null
 
   function results() {
     if (isPending) return <LeagueListSkeleton />
@@ -52,6 +54,7 @@ export default function App() {
         <SportSelect value={sport} options={options} onChange={setSport} />
       </div>
       {results()}
+      <BadgeSheet league={selected} onClose={() => setSelectedId(null)} />
     </>
   )
 }
