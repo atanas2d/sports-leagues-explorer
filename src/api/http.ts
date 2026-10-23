@@ -22,8 +22,10 @@ export async function getJson(url: string, signal?: AbortSignal): Promise<unknow
   }
 }
 
-// fetch() throws only when no response arrives: offline, DNS, or a reply without CORS headers (the
-// provider's 429 looks like that in a browser). An abort is a cancelled request, not a failure.
+/**
+ * fetch() throws only when no response arrives: offline, DNS, or a reply without CORS headers (the
+ * provider's 429 looks like that in a browser). An abort is a cancelled request, not a failure.
+ */
 async function fetchOrNetworkError(url: string, signal?: AbortSignal): Promise<Response> {
   try {
     return await fetch(url, { signal })
@@ -33,7 +35,7 @@ async function fetchOrNetworkError(url: string, signal?: AbortSignal): Promise<R
   }
 }
 
-// By name, not instanceof DOMException: jsdom and the browser use different classes.
+/** By name, not instanceof DOMException: jsdom and the browser use different classes. */
 function isAbort(error: unknown): boolean {
   return typeof error === 'object' && error !== null && 'name' in error && error.name === 'AbortError'
 }
