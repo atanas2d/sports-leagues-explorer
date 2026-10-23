@@ -38,3 +38,9 @@ To use another key, set `VITE_SPORTSDB_KEY` when running or building:
 
 Anything in a `VITE_*` variable ends up in the public bundle, so a paid key belongs behind a proxy,
 not in the browser.
+
+## Notes
+
+- [DECISIONS.md](DECISIONS.md): what the API really returns, the architecture, caching, errors,
+  trade-offs and the time spent.
+- [AI.md](AI.md): how AI tools were used and what was done by hand.
