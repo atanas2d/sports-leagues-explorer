@@ -96,6 +96,7 @@ describe('App', () => {
     vi.stubGlobal('fetch', fetchMock)
     renderApp()
     expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't reach the data provider")
+    expect(screen.getByRole('searchbox', { name: 'Search leagues' })).toBeDisabled()
 
     await userEvent.click(screen.getByRole('button', { name: 'Try again' }))
     expect(await screen.findByRole('button', { name: /English Premier League/ })).toBeInTheDocument()

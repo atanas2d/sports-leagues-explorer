@@ -26,10 +26,11 @@ export default function App() {
     [leagues, filters.query, sport],
   )
   const selected = leagues.find((league) => league.id === selectedId) ?? null
+  const busy = isPending || error !== null
 
   function results() {
     if (isPending) return <LeagueListSkeleton />
-    if (error) return <ErrorState error={error} onRetry={refetch} />
+    if (error) return <ErrorState error={error} onRetry={() => refetch()} />
     return (
       <>
         <ResultsSummary shown={shown.length} total={leagues.length} />
@@ -49,11 +50,13 @@ export default function App() {
         <p>Data: TheSportsDB</p>
       </header>
       <DataSourceNote demo={demo} sportCount={options.length} />
-      <div className="filters" role="search">
-        <SearchInput value={filters.query} onChange={setQuery} />
-        <SportSelect value={sport} options={options} onChange={setSport} />
-      </div>
-      {results()}
+      <main>
+        <div className="filters" role="search">
+          <SearchInput value={filters.query} onChange={setQuery} disabled={busy} />
+          <SportSelect value={sport} options={options} onChange={setSport} disabled={busy} />
+        </div>
+        {results()}
+      </main>
       <BadgeSheet league={selected} onClose={() => setSelectedId(null)} />
     </>
   )

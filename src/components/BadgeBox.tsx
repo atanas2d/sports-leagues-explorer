@@ -19,7 +19,7 @@ export function BadgeBox({ league, badge }: Props) {
       </>
     )
   }
-  if (badge.isError) return <ErrorState error={badge.error} onRetry={badge.refetch} />
+  if (badge.isError) return <ErrorState error={badge.error} onRetry={() => badge.refetch()} />
   if (!badge.data) {
     return (
       <>
