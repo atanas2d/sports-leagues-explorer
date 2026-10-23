@@ -1,0 +1,98 @@
+/* The badge sheet: a bottom sheet on a phone, a centred modal from 720px */
+
+.sheet {
+  position: fixed;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: none;
+  max-height: 90vh;
+  max-height: 90dvh;
+  margin: 0;
+  padding: 10px 18px 22px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 0;
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+}
+
+.sheet[open] {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  text-align: center;
+}
+
+.sheet::backdrop {
+  background: var(--color-scrim);
+}
+
+.sheet .grab {
+  width: 40px;
+  height: 4px;
+  background: var(--color-line);
+  border-radius: 2px;
+}
+
+.sheet h2 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.sheet .sub {
+  margin-top: -8px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.sheet .app-btn {
+  width: 100%;
+}
+
+.badge-box {
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  background: var(--color-bg);
+  border-radius: var(--radius);
+}
+
+.badge-box.loading {
+  background: var(--color-skeleton);
+}
+
+.badge-box.fallback {
+  color: var(--color-muted);
+  background: var(--color-accent-soft);
+}
+
+.sheet .state {
+  width: 100%;
+  margin: 0;
+}
+
+.badge-box img {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+}
+
+.badge-cap {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+@media (min-width: 720px) {
+  .sheet {
+    inset: 0;
+    width: 380px;
+    height: fit-content;
+    margin: auto;
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  .sheet .grab {
+    display: none;
+  }
+}

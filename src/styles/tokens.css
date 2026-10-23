@@ -1,0 +1,52 @@
+:root {
+  --color-bg: #f3f5f4;
+  --color-surface: #ffffff;
+  --color-text: #121a16;
+  --color-muted: #5f6b65;
+  --color-line: #dfe5e2;
+  --color-accent: #0f7b53;
+  --color-accent-soft: #e0f3ea;
+  --color-skeleton: #e6ebe8;
+  --color-scrim: rgba(18, 26, 22, 0.45);
+
+  --radius: 12px;
+  --radius-control: 10px;
+  --radius-sheet: 18px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --gutter: 16px;
+  --row-height: 56px;
+  --tap: 44px;
+  --filters-offset: 128px;
+  --content-max: 1100px;
+
+  /* System font on purpose: no web font download on a cheap phone with expensive data. */
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1513;
+    --color-surface: #172019;
+    --color-text: #e5ece8;
+    --color-muted: #95a49c;
+    --color-line: #26322c;
+    --color-accent: #3cc48f;
+    --color-accent-soft: #15301f;
+    --color-skeleton: #222d27;
+    --color-scrim: rgba(0, 0, 0, 0.6);
+
+    color-scheme: dark;
+  }
+}
+
+@media (min-width: 720px) {
+  :root {
+    --gutter: 28px;
+    --filters-offset: 80px;
+  }
+}
